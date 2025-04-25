@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../data/mock_data.dart';
+import '../../models/service_type.dart';
 import '../../models/vendor.dart';
 import '../../widgets/service_type_filter.dart';
 import '../../widgets/vendor_card.dart';
@@ -155,25 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            if (recommendedVendors.isNotEmpty) ...[
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Icon(CupertinoIcons.star_fill,
-                        color: CupertinoColors.systemYellow),
-                    SizedBox(width: 8),
-                    Text(
-                      'Recommended Vendors',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+     
             Expanded(
               child: ListView(
                 children: [

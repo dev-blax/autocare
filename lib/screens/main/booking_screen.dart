@@ -3,10 +3,8 @@ import 'package:go_router/go_router.dart';
 import '../../models/vendor.dart';
 import '../../models/service_package.dart';
 import '../../models/time_slot.dart';
-import '../../models/payment_method.dart';
 import '../../widgets/service_package_card.dart';
 import '../../widgets/time_slot_picker.dart';
-import '../../widgets/payment_method_selector.dart';
 
 class BookingScreen extends StatefulWidget {
   final Vendor vendor;
@@ -24,8 +22,7 @@ class _BookingScreenState extends State<BookingScreen> {
   ServicePackage? _selectedPackage;
   TimeSlot? _selectedTimeSlot;
   bool _isPickupEnabled = false;
-  final _addressController = TextEditingController(text: '123 Main St');
-  PaymentMethod _selectedPaymentMethod = PaymentMethod.card;
+  final _addressController = TextEditingController(text: 'UDOM CIVE');
 
   @override
   void dispose() {
@@ -46,7 +43,7 @@ class _BookingScreenState extends State<BookingScreen> {
             child: const Text('OK'),
             onPressed: () {
               Navigator.pop(context);
-              context.go('/shell/bookings');
+              context.go('/shell/home');
             },
           ),
         ],
@@ -105,12 +102,19 @@ class _BookingScreenState extends State<BookingScreen> {
                               color: CupertinoColors.systemGrey5,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Icon(
-                              CupertinoIcons.car_detailed,
-                              size: 30,
-                              color:
-                                  CupertinoColors.systemGrey.withOpacity(0.3),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                widget.vendor.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
                             ),
+                            // child: Icon(
+                            //   CupertinoIcons.car_detailed,
+                            //   size: 30,
+                            //   color:
+                            //       CupertinoColors.systemGrey.withOpacity(0.3),
+                            // ),
                           ),
                           const SizedBox(width: 16),
                           Expanded(
@@ -250,9 +254,16 @@ class _BookingScreenState extends State<BookingScreen> {
                                 padding: EdgeInsets.only(left: 8),
                                 child: Icon(CupertinoIcons.location),
                               ),
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: CupertinoColors.systemGrey5,
+                                ),
+                              ),
                             ),
                             const SizedBox(height: 16),
-                            CupertinoButton(
+                            CupertinoButton.tinted(
                               padding: EdgeInsets.zero,
                               onPressed: _showLocationConfirmation,
                               child: const Text('Confirm Location'),
@@ -263,26 +274,26 @@ class _BookingScreenState extends State<BookingScreen> {
                     ],
 
                     // Payment Method
-                    if (_selectedTimeSlot != null) ...[
-                      const Padding(
-                        padding: EdgeInsets.all(16),
-                        child: Text(
-                          'Payment Method',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: PaymentMethodSelector(
-                          selectedMethod: _selectedPaymentMethod,
-                          onSelect: (method) =>
-                              setState(() => _selectedPaymentMethod = method),
-                        ),
-                      ),
-                    ],
+                    // if (_selectedTimeSlot != null) ...[
+                    //   const Padding(
+                    //     padding: EdgeInsets.all(16),
+                    //     child: Text(
+                    //       'Payment Method',
+                    //       style: TextStyle(
+                    //         fontSize: 20,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   Padding(
+                    //     padding: const EdgeInsets.symmetric(horizontal: 16),
+                    //     child: PaymentMethodSelector(
+                    //       selectedMethod: _selectedPaymentMethod,
+                    //       onSelect: (method) =>
+                    //           setState(() => _selectedPaymentMethod = method),
+                    //     ),
+                    //   ),
+                    // ],
                     const SizedBox(height: 32),
                   ],
                 ),
@@ -313,7 +324,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '\$${_selectedPackage?.price.toStringAsFixed(2) ?? '0.00'}',
+                        'Tsh ${_selectedPackage?.price.toStringAsFixed(2) ?? '0.00'}',
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

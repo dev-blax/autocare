@@ -88,6 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       placeholder: placeholder,
       obscureText: isPassword ? !_isPasswordVisible : (isConfirmPassword ? !_isConfirmPasswordVisible : false),
       keyboardType: keyboardType,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       prefix: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: Icon(icon),
@@ -132,7 +133,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // welcome to autocare
+                const SizedBox(height: 32),
+                const Text(
+                  'Welcome to AutoCare',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 16),
+                const Text(
+                  'Create an account',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 32),
                 _buildTextField(
                   controller: _fullNameController,
                   placeholder: 'Full Name (Optional)',

@@ -79,7 +79,7 @@ class ServicePackageCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '\$${package.price.toStringAsFixed(2)}',
+                    'Tsh ${package.price.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

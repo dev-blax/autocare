@@ -57,7 +57,7 @@ class TimeSlotPicker extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '\$${slot.price.toStringAsFixed(2)}',
+                    'Tsh ${slot.price.toStringAsFixed(2)}',
                     style: TextStyle(
                       color: isSelected
                           ? CupertinoColors.white

@@ -41,13 +41,13 @@ class ShellScreen extends StatelessWidget {
           ),
         ],
       ),
-      tabBuilder: (context, index) {
-        return Stack(
-          children: [
-            Positioned.fill(
-              child: navigationShell,
-            ),
-          ],
+      tabBuilder: (BuildContext context, int index) {
+        // Return a simple container that will hold the page content
+        // The actual navigation is handled by navigationShell.goBranch
+        return SafeArea(
+          child: index == navigationShell.currentIndex
+              ? navigationShell
+              : const Center(child: CupertinoActivityIndicator()),
         );
       },
     );

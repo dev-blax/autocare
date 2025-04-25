@@ -10,24 +10,6 @@ class BookingDetailsScreen extends StatelessWidget {
     required this.booking,
   });
 
-  void _showChatDialog(BuildContext context) {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) => CupertinoAlertDialog(
-        title: const Text('Contact Vendor'),
-        content: Text(
-          'Opening chat with ${booking.vendor.name}...\n\nThis is a mock dialog. In a real app, this would open a chat interface.',
-        ),
-        actions: [
-          CupertinoDialogAction(
-            child: const Text('OK'),
-            onPressed: () => Navigator.pop(context),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final dateFormat = DateFormat('EEEE, MMMM d, y');
@@ -36,11 +18,7 @@ class BookingDetailsScreen extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text('Booking Details'),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child: const Icon(CupertinoIcons.chat_bubble_2),
-          onPressed: () => _showChatDialog(context),
-        ),
+        // 
       ),
       child: SafeArea(
         child: SingleChildScrollView(
@@ -175,7 +153,7 @@ class BookingDetailsScreen extends StatelessWidget {
                     _DetailRow(
                       icon: CupertinoIcons.money_dollar,
                       title: 'Total Price',
-                      value: '\$${booking.totalPrice.toStringAsFixed(2)}',
+                      value: 'Tsh ${booking.totalPrice.toStringAsFixed(2)}',
                     ),
                     _DetailRow(
                       icon: CupertinoIcons.creditcard,
@@ -226,7 +204,15 @@ class BookingDetailsScreen extends StatelessWidget {
                                 color: CupertinoColors.systemGrey4,
                                 borderRadius: BorderRadius.circular(25),
                               ),
-                              child: const Icon(CupertinoIcons.person_fill),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  booking.driver!.photoUrl,
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                             const SizedBox(width: 16),
                             Expanded(

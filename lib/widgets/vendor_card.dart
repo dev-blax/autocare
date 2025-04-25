@@ -34,6 +34,10 @@ class VendorCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: CupertinoColors.systemGrey5,
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              image: DecorationImage(
+                image: NetworkImage(vendor.imageUrl),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Stack(
               children: [
@@ -147,7 +151,7 @@ class VendorCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '\$${type.basePrice.toStringAsFixed(2)}',
+                            'Tsh ${type.basePrice.toStringAsFixed(2)}',
                             style: TextStyle(
                               fontSize: 12,
                               color: CupertinoTheme.of(context).primaryColor,

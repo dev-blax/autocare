@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       
       setState(() => _isLoading = false);
       if (mounted) {
-        context.go('/shell/home'); // Navigate to home screen within the shell
+        context.go('/shell/home');
       }
     }
   }
@@ -71,6 +71,21 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // welcome to autocare
+                const Text(
+                  'Welcome to AutoCare',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Login to your account',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
                 const SizedBox(height: 32),
                 CupertinoTextField(
                   controller: _nameController,
@@ -79,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.only(left: 8),
                     child: Icon(CupertinoIcons.person),
                   ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.systemGrey4),
                     borderRadius: BorderRadius.circular(8),
@@ -93,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.only(left: 8),
                     child: Icon(CupertinoIcons.mail),
                   ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.systemGrey4),
                     borderRadius: BorderRadius.circular(8),
@@ -103,6 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _passwordController,
                   placeholder: 'Password',
                   obscureText: !_isPasswordVisible,
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   prefix: const Padding(
                     padding: EdgeInsets.only(left: 8),
                     child: Icon(CupertinoIcons.lock),

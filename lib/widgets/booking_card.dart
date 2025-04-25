@@ -49,10 +49,14 @@ class BookingCard extends StatelessWidget {
                     color: CupertinoColors.systemGrey5,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Icon(
-                    CupertinoIcons.car_detailed,
-                    size: 24,
-                    color: CupertinoColors.systemGrey.withOpacity(0.3),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      booking.vendorImageUrl!,
+                      width: 48,
+                      height: 48,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -105,18 +109,22 @@ class BookingCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(
-                          CupertinoIcons.calendar,
-                          size: 16,
-                          color: CupertinoColors.systemGrey,
+                        Row(
+                          children: [
+                            const Icon(
+                              CupertinoIcons.calendar,
+                              size: 16,
+                              color: CupertinoColors.systemGrey,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(dateFormat.format(booking.dateTime)),
+                          ],
                         ),
-                        const SizedBox(width: 4),
-                        Text(dateFormat.format(booking.dateTime)),
-                      ],
-                    ),
-                    Row(
+                        const SizedBox(height: 4),
+                        Row(
                       children: [
                         const Icon(
                           CupertinoIcons.clock,
@@ -127,8 +135,12 @@ class BookingCard extends StatelessWidget {
                         Text(timeFormat.format(booking.dateTime)),
                       ],
                     ),
+                      ],
+                    ),
+
+                    
                     Text(
-                      '\$${booking.totalPrice.toStringAsFixed(2)}',
+                      'Tsh ${booking.totalPrice.toStringAsFixed(2)}',
                       style: TextStyle(
                         color: CupertinoTheme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
@@ -161,7 +173,7 @@ class BookingCard extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: CupertinoButton(
+                      child: CupertinoButton.tinted(
                         padding: EdgeInsets.zero,
                         onPressed: onViewDetails,
                         child: const Text('View Details'),

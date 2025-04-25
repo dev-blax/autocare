@@ -1,3 +1,5 @@
+import 'service_type.dart';
+
 class ServicePackage {
   final String id;
   final String name;
@@ -5,6 +7,7 @@ class ServicePackage {
   final double price;
   final int durationMinutes;
   final List<String> features;
+  final ServiceType serviceType;
 
   const ServicePackage({
     required this.id,
@@ -13,6 +16,7 @@ class ServicePackage {
     required this.price,
     required this.durationMinutes,
     required this.features,
+    required this.serviceType,
   });
 }
 
@@ -21,7 +25,7 @@ final mockServicePackages = [
     id: 'basic-wash',
     name: 'Basic Wash',
     description: 'Essential exterior wash service',
-    price: 29.99,
+    price: 22000,
     durationMinutes: 30,
     features: [
       'Exterior wash',
@@ -29,12 +33,13 @@ final mockServicePackages = [
       'Basic dry',
       'Windows cleaning',
     ],
+    serviceType: ServiceType.carWash,
   ),
   ServicePackage(
     id: 'premium-wash',
     name: 'Premium Wash',
     description: 'Complete interior & exterior service',
-    price: 49.99,
+    price: 25000,
     durationMinutes: 60,
     features: [
       'Everything in Basic Wash',
@@ -43,19 +48,20 @@ final mockServicePackages = [
       'Tire dressing',
       'Air freshener',
     ],
+    serviceType: ServiceType.carWash,
   ),
   ServicePackage(
     id: 'deluxe-wash',
     name: 'Deluxe Wash',
     description: 'Ultimate car care experience',
-    price: 79.99,
+    price: 27000,
     durationMinutes: 90,
     features: [
       'Everything in Premium Wash',
-      'Wax application',
-      'Leather conditioning',
+      'Waxing',
       'Engine bay cleaning',
       'Paint protection',
     ],
+    serviceType: ServiceType.carWash,
   ),
 ];

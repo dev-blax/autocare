@@ -1,3 +1,5 @@
+import 'service_type.dart';
+
 class Vendor {
   final String id;
   final String name;
@@ -20,20 +22,6 @@ class Vendor {
     required this.imageUrl,
     required this.isRecommended,
   });
-}
-
-enum ServiceType {
-  carWash('Car Wash', 29.99),
-  oilChange('Oil Change', 49.99),
-  tireRotation('Tire Rotation', 39.99),
-  brakeService('Brake Service', 89.99),
-  inspection('Inspection', 34.99),
-  detailing('Detailing', 149.99);
-
-  final String label;
-  final double basePrice;
-
-  const ServiceType(this.label, this.basePrice);
 }
 
 enum SortOption {

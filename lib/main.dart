@@ -13,6 +13,9 @@ void main() {
   runApp(const AutoCareApp());
 }
 
+// Create a GlobalKey for the StatefulNavigationShell
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
 final _router = GoRouter(
   initialLocation: '/login',
   routes: [
@@ -35,7 +38,7 @@ final _router = GoRouter(
       },
       branches: [
         StatefulShellBranch(
-          initialLocation: '/shell/home',
+          navigatorKey: _shellNavigatorKey,
           routes: [
             GoRoute(
               path: '/shell/home',
@@ -44,7 +47,6 @@ final _router = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          initialLocation: '/shell/bookings',
           routes: [
             GoRoute(
               path: '/shell/bookings',
@@ -53,7 +55,6 @@ final _router = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          initialLocation: '/shell/history',
           routes: [
             GoRoute(
               path: '/shell/history',
@@ -62,7 +63,6 @@ final _router = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          initialLocation: '/shell/profile',
           routes: [
             GoRoute(
               path: '/shell/profile',
@@ -83,8 +83,17 @@ class AutoCareApp extends StatelessWidget {
     return CupertinoApp.router(
       title: 'AutoCare',
       theme: const CupertinoThemeData(
-        primaryColor: CupertinoColors.systemBlue,
+        primaryColor: CupertinoColors.activeBlue,
         brightness: Brightness.light,
+        applyThemeToAll: true,
+        textTheme: CupertinoTextThemeData(
+          textStyle: TextStyle(
+            fontFamily: 'SFProText',
+              color: CupertinoColors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
       ),
       routerConfig: _router,
     );

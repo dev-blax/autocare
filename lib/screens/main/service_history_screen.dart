@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import '../../models/booking.dart';
 import '../../models/review.dart';
-import '../../models/service_package.dart';
+import '../../models/service_type.dart';
 import 'package:intl/intl.dart';
-
-import '../../models/vendor.dart';
 
 class ServiceHistoryScreen extends StatefulWidget {
   const ServiceHistoryScreen({super.key});
@@ -24,12 +22,11 @@ class _ServiceHistoryScreenState extends State<ServiceHistoryScreen> {
         .toList();
 
     // Apply service type filter
-    // if (_selectedServiceType != null) {
-    //   bookings = bookings
-    //       .where((booking) =>
-    //           booking.servicePackage.serviceTypes.contains(_selectedServiceType))
-    //       .toList();
-    // }
+    if (_selectedServiceType != null) {
+      bookings = bookings
+          .where((booking) => booking.servicePackage.serviceType == _selectedServiceType)
+          .toList();
+    }
 
     // Apply time range filter
     final now = DateTime.now();
@@ -360,12 +357,16 @@ class _ServiceHistoryScreenState extends State<ServiceHistoryScreen> {
                                         color: CupertinoColors.systemGrey6,
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Icon(
-                                        CupertinoIcons.car_detailed,
-                                        size: 24,
-                                        color: CupertinoColors.systemGrey
-                                            .withOpacity(0.3),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.network(
+                                          booking.vendor.imageUrl,
+                                          width: 48,
+                                          height: 48,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
+                                      
                                     ),
                                     const SizedBox(width: 12),
                                     Expanded(
@@ -376,8 +377,7 @@ class _ServiceHistoryScreenState extends State<ServiceHistoryScreen> {
                                           Text(
                                             booking.vendor.name,
                                             style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
                                             ),
                                           ),
                                           const SizedBox(height: 4),
@@ -394,7 +394,7 @@ class _ServiceHistoryScreenState extends State<ServiceHistoryScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          '\$${booking.totalPrice.toStringAsFixed(2)}',
+                                          'Tsh ${booking.totalPrice}',
                                           style: TextStyle(
                                             color: CupertinoTheme.of(context)
                                                 .primaryColor,

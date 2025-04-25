@@ -147,58 +147,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
   }
 }
 
-class _DetailItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String value;
-  final Color? valueColor;
 
-  const _DetailItem({
-    required this.icon,
-    required this.title,
-    required this.value,
-    this.valueColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            size: 20,
-            color: CupertinoColors.systemGrey,
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: CupertinoColors.systemGrey,
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  value,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: valueColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class _EmptyState extends StatelessWidget {
   final String message;

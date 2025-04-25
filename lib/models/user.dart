@@ -47,10 +47,10 @@ class NotificationPreferences {
 // Mock user data
 final mockUser = User(
   id: '1',
-  name: 'John Doe',
-  email: 'john.doe@example.com',
-  phone: '+1 (555) 123-4567',
-  photoUrl: null,
+  name: 'Vanesa William',
+  email: 'vanesa@williams.com',
+  phone: '+2556 5353 5656',
+  photoUrl: 'https://images.pexels.com/photos/31725147/pexels-photo-31725147/free-photo-of-elegant-portrait-of-woman-with-bold-accessories.jpeg?auto=compress&cs=tinysrgb&w=600',
   notificationPreferences: const NotificationPreferences(
     serviceReminders: true,
     promotions: false,

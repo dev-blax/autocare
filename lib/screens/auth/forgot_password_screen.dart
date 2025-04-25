@@ -88,6 +88,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     padding: EdgeInsets.only(left: 8),
                     child: Icon(CupertinoIcons.mail),
                   ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.systemGrey4),
                     borderRadius: BorderRadius.circular(8),

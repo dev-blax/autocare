@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../models/vendor.dart';
+import '../models/service_type.dart';
 
 class ServiceTypeFilter extends StatelessWidget {
   final List<ServiceType> selectedTypes;

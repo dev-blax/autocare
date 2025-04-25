@@ -54,6 +54,7 @@ class Booking {
   final double totalPrice;
   final PaymentStatus paymentStatus;
   final Driver? driver;
+  final String? vendorImageUrl;
 
   const Booking({
     required this.id,
@@ -66,6 +67,7 @@ class Booking {
     required this.totalPrice,
     this.paymentStatus = PaymentStatus.pending,
     this.driver,
+    this.vendorImageUrl,
   });
 }
 
@@ -75,34 +77,72 @@ final mockBookings = [
     id: '1',
     vendor: mockVendors[0],
     servicePackage: mockServicePackages[1],
-    dateTime: DateTime.now().add(const Duration(hours: 2)),
-    status: BookingStatus.confirmed,
+    dateTime: DateTime.now().subtract(const Duration(days: 2)),
+    status: BookingStatus.completed,
     isPickupEnabled: true,
-    pickupAddress: '123 Main St',
-    totalPrice: 49.99,
+    pickupAddress: 'Kisasa, Dodoma',
+    totalPrice: 12000,
     paymentStatus: PaymentStatus.paid,
     driver: mockDrivers[0],
+    vendorImageUrl: mockVendors[0].imageUrl,
   ),
   Booking(
     id: '2',
     vendor: mockVendors[1],
     servicePackage: mockServicePackages[0],
-    dateTime: DateTime.now().add(const Duration(days: 1)),
-    status: BookingStatus.confirmed,
+    dateTime: DateTime.now().subtract(const Duration(days: 5)),
+    status: BookingStatus.completed,
     isPickupEnabled: false,
-    totalPrice: 29.99,
-    paymentStatus: PaymentStatus.pending,
+    totalPrice: 20000,
+    paymentStatus: PaymentStatus.paid,
+    vendorImageUrl: mockVendors[1].imageUrl,
   ),
   Booking(
     id: '3',
+    vendor: mockVendors[1],
+    servicePackage: mockServicePackages[0],
+    dateTime: DateTime.now().subtract(const Duration(days: 5)),
+    status: BookingStatus.confirmed,
+    isPickupEnabled: false,
+    totalPrice: 20000,
+    paymentStatus: PaymentStatus.paid,
+    vendorImageUrl: mockVendors[1].imageUrl,
+  ),
+
+  Booking(
+    id: '4',
+    vendor: mockVendors[0],
+    servicePackage: mockServicePackages[0],
+    dateTime: DateTime.now().subtract(const Duration(days: 5)),
+    status: BookingStatus.inProgress,
+    isPickupEnabled: false,
+    totalPrice: 20000,
+    paymentStatus: PaymentStatus.paid,
+    vendorImageUrl: mockVendors[0].imageUrl,
+  ),
+
+  Booking(
+    id: '5',
+    vendor: mockVendors[1],
+    servicePackage: mockServicePackages[0],
+    dateTime: DateTime.now().subtract(const Duration(days: 5)),
+    status: BookingStatus.confirmed,
+    isPickupEnabled: false,
+    totalPrice: 20000,
+    paymentStatus: PaymentStatus.paid,
+    vendorImageUrl: mockVendors[1].imageUrl,
+  ),
+  Booking(
+    id: '6',
     vendor: mockVendors[2],
     servicePackage: mockServicePackages[2],
-    dateTime: DateTime.now().subtract(const Duration(minutes: 30)),
-    status: BookingStatus.inProgress,
+    dateTime: DateTime.now().subtract(const Duration(days: 15)),
+    status: BookingStatus.completed,
     isPickupEnabled: true,
-    pickupAddress: '456 Oak Ave',
-    totalPrice: 79.99,
+    pickupAddress: 'Makole, Dodoma',
+    totalPrice: 25000,
     paymentStatus: PaymentStatus.paid,
     driver: mockDrivers[1],
+    vendorImageUrl: mockVendors[2].imageUrl,
   ),
 ];

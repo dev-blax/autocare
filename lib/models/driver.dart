@@ -19,17 +19,17 @@ class Driver {
 final mockDrivers = [
   Driver(
     id: 'd1',
-    name: 'John Smith',
-    phone: '+1 (555) 123-4567',
-    photoUrl: 'assets/driver1.jpg',
+    name: 'Enock William',
+    phone: '+255 655 533 588',
+    photoUrl: 'https://images.pexels.com/photos/31738334/pexels-photo-31738334/free-photo-of-confident-man-standing-in-open-field.jpeg?auto=compress&cs=tinysrgb&w=600',
     rating: 4.8,
     completedTrips: 342,
   ),
   Driver(
     id: 'd2',
-    name: 'Sarah Johnson',
-    phone: '+1 (555) 987-6543',
-    photoUrl: 'assets/driver2.jpg',
+    name: 'James Mbogo',
+    phone: '+255 653 533580',
+    photoUrl: 'https://images.pexels.com/photos/31766866/pexels-photo-31766866/free-photo-of-portrait-of-a-thoughtful-woman-outdoors.jpeg?auto=compress&cs=tinysrgb&w=600',
     rating: 4.9,
     completedTrips: 567,
   ),
